@@ -1,0 +1,44 @@
+package cintra.coelho.fraga.caio.galeriapublica;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.paging.PagingDataAdapter;
+import androidx.recyclerview.widget.DiffUtil;
+
+import java.text.SimpleDateFormat;
+
+import cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder;
+import kotlinx.coroutines.CoroutineDispatcher;
+
+public class ListAdapter extends PagingDataAdapter<ImageData, cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder> {
+    public ListAdapter(@NonNull DiffUtil.ItemCallback<ImageData> diffCallback) {
+        super(diffCallback);
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.list_item, parent, false);
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+        ImageData imageData = getItem(position);
+
+        TextView tvName = holder.itemView.findViewById(R.id.tvName);
+        tvName.setText(imageData.fileName);
+
+        TextView tvDate = holder.itemView.findViewById(R.id.tvDate);
+        tvDate.setText("Data: " + new SimpleDateFormat("HH:mmdd/MM/yyyy").format(imageData.date));
+
+        TextView tvSize = holder.itemView.findViewById(R.id.tvSize);
+        tvSize.setText("Ta");
+    }
+}
