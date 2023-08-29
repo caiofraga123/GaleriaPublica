@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder;
+
 import androidx.annotation.NonNull;
 import androidx.paging.PagingDataAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
 import java.text.SimpleDateFormat;
 
-import cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder;
-import kotlinx.coroutines.CoroutineDispatcher;
+public class GridAdapter extends PagingDataAdapter<ImageData, cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder> {
 
-public class ListAdapter extends PagingDataAdapter<ImageData, cintra.coelho.fraga.caio.galeriapublica.adapter.MyViewHolder> {
-    public ListAdapter(@NonNull DiffUtil.ItemCallback<ImageData> diffCallback) {
+    public GridAdapter(@NonNull DiffUtil.ItemCallback<ImageData> diffCallback) {
         super(diffCallback);
     }
 
@@ -31,7 +31,6 @@ public class ListAdapter extends PagingDataAdapter<ImageData, cintra.coelho.frag
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         ImageData imageData = getItem(position);
 
         TextView tvName = holder.itemView.findViewById(R.id.tvName);
@@ -47,4 +46,5 @@ public class ListAdapter extends PagingDataAdapter<ImageData, cintra.coelho.frag
         ImageView imageView = holder.itemView.findViewById(R.id.imThumb);
         imageView.setImageBitmap(thumb);
     }
+
 }
