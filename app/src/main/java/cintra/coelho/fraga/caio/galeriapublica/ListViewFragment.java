@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagingData;
@@ -27,7 +28,7 @@ public class ListViewFragment extends Fragment {
     private MainViewModel mViewModel;
     private View view;
 
-    public static ListViewFragment newInstance(String param1, String param2) {
+    public static ListViewFragment newInstance() {
         return new ListViewFragment();
     }
 
@@ -35,7 +36,7 @@ public class ListViewFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.list_view_fragment, container, false);
+        view = inflater.inflate(R.layout.fragment_list_view, container, false);
         return view;
     }
 
@@ -47,8 +48,8 @@ public class ListViewFragment extends Fragment {
         LiveData<PagingData<ImageData>> liveData = mViewModel.getPageLv();
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<ImageData>>() {
             @Override
-            public void onChanged(PagingData<ImageData> imageDataPagingData) {
-                listAdapter.submitData(getViewLifecycleOwner(), new Observer<PagingData>);
+            public void onChanged(PagingData<ImageData> objectPagingData) {
+                listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), objectPagingData);
             }
         });
 

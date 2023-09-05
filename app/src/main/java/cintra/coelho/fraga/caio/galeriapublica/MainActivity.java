@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
             @Override
-            public boolean onNavigationItemReselected(@NonNull MenuItem item) {
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
                 vm.setNavigationOpSelected(item.getItemId());
                 switch (item.getItemId()){
                     case R.id.gridVewOp:
@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(listViewFragment);
                         break;
                 }
-                return true;
             }
         });
     }
