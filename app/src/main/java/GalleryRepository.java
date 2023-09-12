@@ -26,8 +26,8 @@ public class GalleryRepository {
 
     public List<ImageData> loadImageData(Integer limit, Integer offSet) throws FileNotFoundException {
         List<ImageData> imageDataList = new ArrayList<>();
-        int w = (int)context.getResources().getDimension(R.dimen.im_width);
-        int h = (int)context.getResources().getDimension(R.dimen.im_height);
+        int w = (int)context.getResources().getDimension(R.dimen.itemWidth);
+        int h = (int)context.getResources().getDimension(R.dimen.itemHeight);
 
         String[] projection = new String[]{
                 MediaStore.Images.Media._ID,
@@ -90,7 +90,7 @@ public class GalleryRepository {
             // Stores column values and the contentUri in a local object
             // that represents the media file.
 
-            imageDataList.add(new ImageData(contentUri, thumb, name, new Date(dateAdded*1000L), size))
+            imageDataList.add(new ImageData(contentUri, thumb, name, new Date(dateAdded*1000L), size));
         }
         return imageDataList;
     }

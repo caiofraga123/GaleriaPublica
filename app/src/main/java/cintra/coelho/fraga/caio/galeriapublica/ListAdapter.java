@@ -44,7 +44,7 @@ public class ListAdapter extends PagingDataAdapter<ImageData, cintra.coelho.frag
         tvSize.setText("Tamanho: " + String.valueOf(imageData.size));
 
         Bitmap thumb = imageData.thumb;
-        ImageView imageView = holder.itemView.findViewById(R.id.imThumb);
+        ImageView imageView = holder.itemView.findViewById(R.id.imThumb2);
         imageView.setImageBitmap(thumb);
     }
 }

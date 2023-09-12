@@ -25,22 +25,13 @@ public class GridAdapter extends PagingDataAdapter<ImageData, cintra.coelho.frag
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.list_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.grid_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ImageData imageData = getItem(position);
-
-        TextView tvName = holder.itemView.findViewById(R.id.tvName);
-        tvName.setText(imageData.fileName);
-
-        TextView tvDate = holder.itemView.findViewById(R.id.tvDate);
-        tvDate.setText("Data: " + new SimpleDateFormat("HH:mmdd/MM/yyyy").format(imageData.date));
-
-        TextView tvSize = holder.itemView.findViewById(R.id.tvSize);
-        tvSize.setText("Tamanho: " + String.valueOf(imageData.size));
 
         Bitmap thumb = imageData.thumb;
         ImageView imageView = holder.itemView.findViewById(R.id.imThumb);
